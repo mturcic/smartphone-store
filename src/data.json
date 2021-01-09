@@ -1,0 +1,54 @@
+{
+    "products":[
+        {
+            "_id": "smartphone1", 
+            "title": "iPhone 12",
+            "image": "/images/smartphone1.jpg",
+            "description": "About this phone...", 
+            "price": [200,250,300],
+            "Available models": ["64GB","128GB","256GB"]
+        },
+        {
+            "_id": "smartphone2", 
+            "title": "OnePlus 6T",
+            "image": "/images/smartphone2.jpg",
+            "description": "About this phone...", 
+            "price": [200,250,300],
+            "Available models": ["64GB","128GB","256GB"]
+        },
+        {
+            "_id": "smartphone3", 
+            "title": "Huawei P40 Pro",
+            "image": "/images/smartphone3.jpg",
+            "description": "About this phone...", 
+            "price": [200,250,300],
+            "Available models": ["64GB","128GB","256GB"]
+        },
+        {
+            "_id": "smartphone4", 
+            "title": "Samsung Galaxy S10",
+            "image": "/images/smartphone4.jpg",
+            "description": "About this phone...", 
+            "price": [200,250,300],
+            "Available models": ["64GB","128GB","256GB"]
+        },
+        {
+            "_id": "smartphone5", 
+            "title": "Xiaomi mi10T",
+            "image": "/images/smartphone5.jpg",
+            "description": "About this phone...", 
+            "price": [200,250,300],
+            "Available models": ["64GB","128GB","256GB"]
+        },
+        {
+            "_id": "smartphone6", 
+            "title": "Alcatel OneTouch 2001",
+            "image": "/images/smartphone6.jpg",
+            "description": "About this phone...", 
+            "price": [200,250,300],
+            "Available models": ["64GB","128GB","256GB"]
+        }
+
+
+    ]
+}
