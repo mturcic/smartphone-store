@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import formatCurrency from '../util'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 export default class Products extends Component {
     render() {
@@ -11,13 +13,15 @@ export default class Products extends Component {
                             <div className="product">
                                 <a href={"#"+product._id}>
                                     <img src={product.image} alt={product.title}/>
-                                    <p>
+                                    <p className="product-title">
                                         {product.title}
                                     </p>
                                 </a>
                                 <div className="product-price">
-                                    <div>{formatCurrency(product.price[0])}</div>
-                                    <button className="button">Add To Cart</button>
+                                    <div>{formatCurrency(product.price)}</div>
+                                    <button className="button">
+                                    <FontAwesomeIcon icon={faShoppingCart}/>
+                                    &nbsp;&nbsp;Add To Cart</button>
                                 </div>
                             </div>
                         </li>
