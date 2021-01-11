@@ -5,15 +5,15 @@ export default class Filter extends Component {
     return (
       <div className="filter">
         <div className="filter-result">{this.props.count+' '}Products</div>
-        <div className="filter-sort">Sort{' '}
-          <select value={this.props.sort} onChange={this.props.sortProducts}>
+        <div className="filter-sort">Sort:{' '}
+          <select className="select" value={this.props.sort} onChange={this.props.sortProducts}>
             <option>Latest</option>
             <option value="LOWEST">Price Ascending</option>
             <option value="HIGHEST">Price Descending</option>
           </select>
         </div>
-        <div className="filter-size">Filter{' '}
-          <select value={this.props.price} onChange={this.props.filterProducts}>
+        <div className="filter-size">Filter:{' '}
+          <select className="select" value={this.props.price} onChange={this.props.filterProducts}>
             <option value="">All</option>
             <option value="200">Under $200</option>
             <option value="500">$200 to $500</option>
