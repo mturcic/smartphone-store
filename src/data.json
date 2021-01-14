@@ -4,34 +4,34 @@
             "_id": "smartphone1", 
             "title": "iPhone 12",
             "image": "/images/smartphone1.jpg",
-            "description": "About this phone...", 
+            "description": "The iPhone 12 and iPhone 12 mini are Apple's mainstream flagship iPhones for 2020. The phones come in 6.1-inch and 5.4-inch sizes with identical features, including support for faster 5G cellular networks, OLED displays, improved cameras, and Apple's latest A14 chip, all in a completely refreshed design.", 
             "price": 799,
             "availableModels": ["64GB","128GB","256GB"],
-            "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
+            "video": "https://www.youtube.com/embed/65JrtwtTOdc?controls=0"
         },
         {
             "_id": "smartphone2", 
             "title": "OnePlus 6T",
             "image": "/images/smartphone2.jpg",
-            "description": "About this phone...", 
+            "description": "The OnePlus 6T is an incremental hardware update to the prior OnePlus 6. Namely through increasing the size of the display along with the device's screen-to-body ratio by slightly shrinking the bottom chin bezel and using a taller, 19.5:9 AMOLED panel with more heavily curved corners & significantly smaller teardrop shaped notch. Update also includes increasing the size of the battery, removing the 3.5 mm audio jack, and providing a new optical in-display fingerprint sensor.", 
             "price": 215,
             "availableModels": ["64GB","128GB","256GB"],
-            "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
+            "video": "https://www.youtube.com/embed/GcXUi1Xj9i8?controls=0"
         },
         {
             "_id": "smartphone3", 
             "title": "Huawei P40 Pro",
             "image": "/images/smartphone3.jpg",
-            "description": "About this phone...", 
+            "description": "Huawei P40 Pro smartphone runs on Android v10 (Q) operating system. The phone is powered by Octa core (2.86 GHz, Dual core, Cortex A76 + 2.36 GHz, Dual core, Cortex A76 + 1.95 GHz, Quad core, Cortex A55) processor. It runs on the HiSilicon Kirin 990 5G Chipset. It has 8 GB RAM and 256 GB internal storage.", 
             "price": 750,
             "availableModels": ["64GB","128GB","256GB"],
-            "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
+            "video": "https://www.youtube.com/embed/eo78Pe_q3B8?controls=0"
         },
         {
             "_id": "smartphone4", 
             "title": "Samsung Galaxy S20",
             "image": "/images/smartphone4.jpg",
-            "description": "About this phone...", 
+            "description": "Samsung Galaxy S20 smartphone runs on Android 10 operating system. The phone is powered by Octa core (2.73 GHz, Dual core, M5 Mongoose + 2.5 GHz, Dual core, Cortex A76 + 2 GHz, Quad core, Cortex A55) processor. It runs on the Samsung Exynos 9 Octa 990 Chipset. It has 8 GB RAM and 128 GB internal storage.", 
             "price": 205,
             "availableModels": ["64GB","128GB","256GB"],
             "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
@@ -40,19 +40,19 @@
             "_id": "smartphone5", 
             "title": "Xiaomi Mi11",
             "image": "/images/smartphone5.jpg",
-            "description": "The Xiaomi Mi 11 Smartphone offers with Qualcomm Snapdragon 888, 8GB / 12GB LPDDR5 RAM, 128 GB/ 256GB UFS 3.1 ROM, 4,600 mAh power cell that supports 55W wired fast-charging, 50W wireless, and 10W reverse charging, 6.81” AMOLED quad curved DotDisplay panel and WQHD+ 3200x1440 resolution display, as well as 108MP 8K main camera.", 
+            "description": "The Xiaomi Mi 11 Smartphone offers with Qualcomm Snapdragon 888, 8GB / 12GB LPDDR5 RAM, 128 GB/ 256GB UFS 3.1 ROM, 4,600 mAh power cell that supports 55W wired fast-charging, 50W wireless, 6.81” AMOLED quad curved DotDisplay panel and WQHD+ 3200x1440 resolution display, as well as 108MP 8K main camera.", 
             "price": 780,
             "availableModels": ["64GB","128GB","256GB"],
-            "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
+            "video": "https://www.youtube.com/embed/Im4s3KxKRvU?controls=0"
         },
         {
             "_id": "smartphone6", 
             "title": "Alcatel OneTouch 2001",
             "image": "/images/smartphone6.jpg",
-            "description": "About this phone...", 
+            "description": "Alcatel One Touch 2001 is a perfect mobile device for people experiencing eyesight problems. Durable and simple design is available in 3 colors.", 
             "price": 79,
-            "availableModels": ["64GB","128GB","256GB"],
-            "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
+            "availableModels": ["Blue","Red","Black"],
+            "video": "https://www.youtube.com/embed/TvYNePMwMIA?controls=0"
         }
 
 
