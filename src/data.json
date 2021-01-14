@@ -6,7 +6,8 @@
             "image": "/images/smartphone1.jpg",
             "description": "About this phone...", 
             "price": 799,
-            "availableModels": ["64GB","128GB","256GB"]
+            "availableModels": ["64GB","128GB","256GB"],
+            "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
         },
         {
             "_id": "smartphone2", 
@@ -14,7 +15,8 @@
             "image": "/images/smartphone2.jpg",
             "description": "About this phone...", 
             "price": 215,
-            "availableModels": ["64GB","128GB","256GB"]
+            "availableModels": ["64GB","128GB","256GB"],
+            "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
         },
         {
             "_id": "smartphone3", 
@@ -22,7 +24,8 @@
             "image": "/images/smartphone3.jpg",
             "description": "About this phone...", 
             "price": 750,
-            "availableModels": ["64GB","128GB","256GB"]
+            "availableModels": ["64GB","128GB","256GB"],
+            "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
         },
         {
             "_id": "smartphone4", 
@@ -30,15 +33,17 @@
             "image": "/images/smartphone4.jpg",
             "description": "About this phone...", 
             "price": 205,
-            "availableModels": ["64GB","128GB","256GB"]
+            "availableModels": ["64GB","128GB","256GB"],
+            "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
         },
         {
             "_id": "smartphone5", 
-            "title": "Xiaomi mi11",
+            "title": "Xiaomi Mi11",
             "image": "/images/smartphone5.jpg",
-            "description": "About this phone...", 
+            "description": "The Xiaomi Mi 11 Smartphone offers with Qualcomm Snapdragon 888, 8GB / 12GB LPDDR5 RAM, 128 GB/ 256GB UFS 3.1 ROM, 4,600 mAh power cell that supports 55W wired fast-charging, 50W wireless, and 10W reverse charging, 6.81” AMOLED quad curved DotDisplay panel and WQHD+ 3200x1440 resolution display, as well as 108MP 8K main camera.", 
             "price": 780,
-            "availableModels": ["64GB","128GB","256GB"]
+            "availableModels": ["64GB","128GB","256GB"],
+            "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
         },
         {
             "_id": "smartphone6", 
@@ -46,7 +51,8 @@
             "image": "/images/smartphone6.jpg",
             "description": "About this phone...", 
             "price": 79,
-            "availableModels": ["64GB","128GB","256GB"]
+            "availableModels": ["64GB","128GB","256GB"],
+            "video": "https://www.youtube.com/embed/x0Kv_QRWR-I?controls=0"
         }
 
 
