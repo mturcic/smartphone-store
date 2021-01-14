@@ -3,7 +3,6 @@ import data from './data.json';
 import Products from './components/Products.js';
 import Filter from './components/Filter';
 import Cart from './components/Cart';
-import userEvent from '@testing-library/user-event';
 
 class App extends React.Component {
   constructor() {
@@ -92,36 +91,47 @@ class App extends React.Component {
   };
   render() {
     return(
-    <div className="grid-container">
-      <header>
-        <a href="/">Smartphone store</a>
-      </header>
-      <main>
-        <div className="content">
-          <div className="main">
-            <Filter count={this.state.products.length}
-                    price={this.state.price}
-                    sort={this.state.sort}
-                    filterProducts={this.filterProducts}
-                    sortProducts={this.sortProducts}
-            ></Filter>
-            <Products products={this.state.products} addToCart={this.addToCart}></Products>
+      <div className="grid-container">
+        <header>
+          <a href="/">Smartphone store</a>
+        </header>
+        <main>
+          <div className="content">
+            <div className="main">
+              <Filter count={this.state.products.length}
+                      price={this.state.price}
+                      sort={this.state.sort}
+                      filterProducts={this.filterProducts}
+                      sortProducts={this.sortProducts}
+              ></Filter>
+              <Products products={this.state.products} addToCart={this.addToCart}></Products>
+            </div>
+            <div className="sidebar">
+              <Cart cartItems={this.state.cartItems} 
+                    removeFromCart={this.removeFromCart}
+                    createOrder={this.createOrder}>
+              </Cart>
+            </div>
+          <ul className="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                </ul>
           </div>
-          <div className="sidebar">
-            <Cart cartItems={this.state.cartItems} 
-                  removeFromCart={this.removeFromCart}
-                  createOrder={this.createOrder}>
-            </Cart>
-          </div>
-        </div>
-      </main>
-      <footer>
-        All rights reserved. 
-        <a className="tag" href="https://www.github.com/mturcic" target="_blank" rel="noopener noreferrer">&nbsp; ©	mturcic</a> 
-      </footer>
-    </div>
+        </main>
+        <footer>
+          All rights reserved. 
+          <a className="tag" href="https://www.github.com/mturcic" target="_blank" rel="noopener noreferrer">&nbsp; ©	mturcic</a> 
+        </footer>
+      </div>
     )
   }
 }
-
 export default App;
