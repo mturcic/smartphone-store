@@ -13,7 +13,7 @@ export default class Cart extends Component {
     }
   }
   
-  handleInput = (e) => {
+  handleInput = (e) => { 
     this.setState({
       [e.target.name]: e.target.value,
       [e.target.email]: e.target.value,

@@ -1,29 +1,32 @@
-import React from 'react';
+import React from "react";
 
 class AwesomeButton extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
       status: false,
-      text: 'Save',
-      class: '',
-    }
+      text: "Save",
+      class: "",
+    };
   }
-  
+
   click() {
     this.setState({
       status: !this.state.status,
-      text: (!this.state.status) ? String.fromCharCode('10003') : 'Save',
-      class: (!this.state.status) ? 'checked' : '',
-    })
+      text: !this.state.status ? String.fromCharCode("10003") : "Save",
+      class: !this.state.status ? "checked" : "",
+    });
   }
- 
+
   render() {
     return (
-<button 
-  className={`awesome-btn ` + this.state.class}
-  onClick={this.click.bind(this)}>{this.state.text}</button>
-    )
+      <button
+        className={`awesome-btn ` + this.state.class}
+        onClick={this.click.bind(this)}
+      >
+        {this.state.text}
+      </button>
+    );
   }
 }
 

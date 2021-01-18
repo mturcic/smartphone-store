@@ -1,9 +1,25 @@
-import { FETCH_PRODUCTS } from "../types";
+import {
+  FETCH_PRODUCTS,
+  FILTER_PRODUCTS_BY_PRICE,
+  ORDER_PRODUCTS_BY_PRICE,
+} from "../types";
 
-export const productsReducer = (state = {}, action) => {
+export const productsReducer = (state = { cart: [] }, action) => {
   switch (action.type) {
+    case FILTER_PRODUCTS_BY_PRICE:
+      return {
+        ...state,
+        price: action.payload.price,
+        filteredItems: action.payload.items,
+      };
+    case ORDER_PRODUCTS_BY_PRICE:
+      return {
+        ...state,
+        sort: action.payload.sort,
+        filteredItems: action.payload.items,
+      };
     case FETCH_PRODUCTS:
-      return { items: action.payload };
+      return { items: action.payload, filteredItems: action.payload };
     default:
       return state;
   }
