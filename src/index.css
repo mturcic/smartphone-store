@@ -469,8 +469,8 @@ input {
 
 /*Media Query*/
 iframe {
-  height: 400px;
-  width: 700px;
+  height: 350px;
+  width: 630px;
 }
 @media only screen and (max-width: 900px) {
   iframe {

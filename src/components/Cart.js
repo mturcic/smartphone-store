@@ -1,25 +1,27 @@
-import React, { Component } from 'react'
-import formatCurrency from '../util.js'
-import Fade from 'react-reveal/Fade';
+import React, { Component } from "react";
+import formatCurrency from "../util.js";
+import Fade from "react-reveal/Fade";
+import { connect } from "react-redux";
+import { removeFromCart } from "../actions/cartActions.js";
 
-export default class Cart extends Component {
-  constructor(props){
+class Cart extends Component {
+  constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      address: '',
-      showCheckout: false
-    }
+      name: "",
+      email: "",
+      address: "",
+      showCheckout: false,
+    };
   }
-  
-  handleInput = (e) => { 
+
+  handleInput = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
       [e.target.email]: e.target.value,
-      [e.target.address]: e.target.value
+      [e.target.address]: e.target.value,
     });
-  }
+  };
 
   createOrder = (e) => {
     e.preventDefault();
@@ -28,38 +30,44 @@ export default class Cart extends Component {
       email: this.state.email,
       address: this.state.address,
       cartItems: this.props.cartItems,
-    }
+    };
     this.props.createOrder(order);
-  }
+  };
 
   render() {
-    const {cartItems} = this.props;
+    const { cartItems } = this.props;
     return (
       <div>
-        {cartItems.length === 0 ? (<div className="cart cart-header">Cart is empty</div>)
-        :
-        (<div className="cart cart-header">You have {cartItems.length} items in the cart{' '}</div>)
-        }
+        {cartItems.length === 0 ? (
+          <div className="cart cart-header">Cart is empty</div>
+        ) : (
+          <div className="cart cart-header">
+            You have {cartItems.length} items in the cart{" "}
+          </div>
+        )}
         <div>
           <div className="cart">
             <Fade left cascade>
               <ul className="cart-items">
-                  {cartItems.map((item) => (
-                    <li key={item._id}>
-                      <div>
-                        <img src={item.image} alt={item.title}/>
+                {cartItems.map((item) => (
+                  <li key={item._id}>
+                    <div>
+                      <img src={item.image} alt={item.title} />
+                    </div>
+                    <div>
+                      <a href={"#" + item._id}>{item.title}</a>
+                      <div className="right">
+                        {formatCurrency(item.price)} x {item.count}{" "}
+                        <button
+                          className="button-remove"
+                          onClick={() => this.props.removeFromCart(item)}
+                        >
+                          Remove
+                        </button>
                       </div>
-                      <div>
-                        <a href={"#"+item._id}>{item.title}</a>
-                        <div className="right">
-                          {formatCurrency(item.price)} x {item.count}{' '}
-                          <button className="button-remove" onClick={() => this.props.removeFromCart(item)}>
-                            Remove
-                          </button>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
+                    </div>
+                  </li>
+                ))}
               </ul>
             </Fade>
           </div>
@@ -68,54 +76,75 @@ export default class Cart extends Component {
               <div className="cart">
                 <div className="total">
                   <div>
-                    Total:{' '}
+                    Total:{" "}
                     {formatCurrency(
-                    cartItems.reduce((a, c) => a + c.price * c.count, 0))}
+                      cartItems.reduce((a, c) => a + c.price * c.count, 0)
+                    )}
                   </div>
-                  <button onClick={() => {this.setState({showCheckout:true})}} className="button">Proceed</button>
+                  <button
+                    onClick={() => {
+                      this.setState({ showCheckout: true });
+                    }}
+                    className="button"
+                  >
+                    Proceed
+                  </button>
                 </div>
               </div>
-            {this.state.showCheckout && (
-              <Fade right cascade>
-                <div className="cart">
-                  <form onSubmit={this.createOrder}>
-                    <ul className="form-container">
-                      <li>
-                        <label>E-mail</label>
-                        <input 
-                          name="email"
-                          type="email" 
-                          required 
-                          onChange={this.handleInput}/>
-                      </li>
-                      <li>
-                        <label>Name</label>
-                        <input 
-                          name="name"
-                          type="text" 
-                          required 
-                          onChange={this.handleInput}/>
-                      </li>
-                      <li>
-                        <label>Address</label>
-                        <input 
-                          name="address"
-                          type="text" 
-                          required 
-                          onChange={this.handleInput}/>
-                      </li>
-                      <li>
-                        <button className="button" type="submit">Checkout</button>
-                      </li>
-                    </ul>
-                  </form>
-                </div>
-              </Fade>
-            )}
+              {this.state.showCheckout && (
+                <Fade right cascade>
+                  <div className="cart">
+                    <form onSubmit={this.createOrder}>
+                      <ul className="form-container">
+                        <li>
+                          <label>E-mail</label>
+                          <input
+                            name="email"
+                            type="email"
+                            required
+                            onChange={this.handleInput}
+                          />
+                        </li>
+                        <li>
+                          <label>Name</label>
+                          <input
+                            name="name"
+                            type="text"
+                            required
+                            onChange={this.handleInput}
+                          />
+                        </li>
+                        <li>
+                          <label>Address</label>
+                          <input
+                            name="address"
+                            type="text"
+                            required
+                            onChange={this.handleInput}
+                          />
+                        </li>
+                        <li>
+                          <button className="button" type="submit">
+                            Checkout
+                          </button>
+                        </li>
+                      </ul>
+                    </form>
+                  </div>
+                </Fade>
+              )}
             </div>
           )}
         </div>
       </div>
-    )
+    );
   }
 }
+export default connect(
+  (state) => ({
+    cartItems: state.cart.cartItems,
+  }),
+  {
+    removeFromCart,
+  }
+)(Cart);
