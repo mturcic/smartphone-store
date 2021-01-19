@@ -5,7 +5,7 @@ import {
   faTimesCircle,
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "../modal.css.js";
+import styles from "../style/modal.css.js";
 import Fade from "react-reveal/Fade";
 import Modal from "react-modal";
 import Zoom from "react-reveal";
@@ -20,11 +20,9 @@ class Products extends Component {
       product: null,
     };
   }
-
   componentDidMount() {
     this.props.fetchProducts();
   }
-
   openModal = (product) => {
     this.setState({ product });
   };
@@ -93,7 +91,7 @@ class Products extends Component {
                     <p>
                       <strong>Available Models:</strong> {"  "}{" "}
                       {product.availableModels.map((x) => (
-                        <span key={x.availableModel}>
+                        <span key={x._id}>
                           {" "}
                           <button className="button">{x}</button>
                         </span>
@@ -118,9 +116,9 @@ class Products extends Component {
                       width="500"
                       height="280"
                       src={product.video}
-                      frameborder="0"
+                      frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen
+                      allowFullScreen
                     ></iframe>
                   </div>
                 </div>

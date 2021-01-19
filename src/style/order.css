@@ -1,0 +1,37 @@
+.order-details {
+  color: #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.order-details li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-details li div {
+  padding: 13px;
+}
+.order-details .items {
+  text-align: right;
+  padding: 0;
+}
+.success-message {
+  font-size: 4rem;
+  color: green;
+  padding: 10px;
+}
+
+/* Orders */
+.orders {
+  width: 100%;
+  padding: 10px;
+}
+td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}

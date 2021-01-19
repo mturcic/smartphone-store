@@ -1,7 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
+
+import "./style/index.css";
+import "./style/product.css";
+import "./style/filter.css";
+import "./style/cart.css";
+import "./style/order.css";
+import "./style/checkoutForm.css";
+import "./style/productDetails.css";
 
 ReactDOM.render(
   <React.Fragment>
