@@ -12,7 +12,12 @@ class App extends React.Component {
       <Provider store={store}>
         <div className="grid-container">
           <header>
-            <a href="/">Smartphone store</a>
+            <img
+              className="header-image"
+              src="/images/header-logo.png"
+              alt="header-logo"
+            />
+            <a href="/">The Smartphone store</a>
           </header>
           <main>
             <div className="content">
