@@ -6,7 +6,7 @@ html {
 }
 body,
 #root {
-  height: 100%;
+  height: auto;
   background: rgb(238, 174, 202);
   background: radial-gradient(
     circle,
@@ -31,7 +31,6 @@ textarea {
     "footer";
   grid-template-rows: 5rem 1fr 5rem;
   grid-template-columns: 1fr;
-  height: 100%;
 }
 a {
   text-decoration: none;
@@ -60,14 +59,19 @@ header a {
 }
 main {
   grid-area: auto;
+  height: auto;
 }
 footer {
   grid-area: footer;
   background-color: #203040;
   color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding: 1rem;
+  z-index: 1;
 }
 
 .content {
@@ -79,6 +83,7 @@ footer {
 }
 .sidebar {
   flex: 1 20rem;
+  z-index: 1;
 }
 
 .tag {
@@ -103,8 +108,25 @@ footer {
   border: 0.1rem #ffffff solid;
 }
 
+.button-list {
+  padding: 5px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: none;
+  background-color: #fafafa;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: black;
+  z-index: 1;
+}
+.button-list:hover {
+  background-color: #23c59b;
+  border: 0.1rem #ffffff solid;
+}
+
 .close-modal {
-  position: absolute;
+  position: fixed;
   right: 3rem;
   top: 3rem;
   z-index: 1000;
@@ -131,19 +153,19 @@ footer {
   background: #4e54c8;
   background: -webkit-linear-gradient(to left, #ccccd1, #4e54c8);
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
 .css-selector {
   background: linear-gradient(346deg, #23c59b, #76b1a1);
-  background-size: 400% 400%;
+  background-size: auto auto;
 
   animation: gradient 34s ease infinite;
 }
 
 @keyframes gradient {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 20%;
   }
   50% {
     background-position: 100% 50%;
@@ -154,10 +176,6 @@ footer {
 }
 .circles {
   position: initial;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
   z-index: 0;
 }
@@ -165,14 +183,12 @@ footer {
   position: absolute;
   display: block;
   list-style: none;
-  width: 20px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.2);
+  background: #203040;
   animation: animate 25s linear infinite;
-  bottom: -150px;
+  z-index: 0;
 }
 .circles li:nth-child(1) {
-  left: 25%;
+  left: 20%;
   width: 80px;
   height: 80px;
   animation-delay: 0s;
@@ -185,7 +201,7 @@ footer {
   animation-duration: 12s;
 }
 .circles li:nth-child(3) {
-  left: 70%;
+  left: 45%;
   width: 20px;
   height: 20px;
   animation-delay: 4s;
@@ -198,21 +214,21 @@ footer {
   animation-duration: 18s;
 }
 .circles li:nth-child(5) {
-  left: 65%;
+  left: 60%;
   width: 20px;
   height: 20px;
   animation-delay: 0s;
 }
 .circles li:nth-child(6) {
-  left: 75%;
+  left: 70%;
   width: 110px;
   height: 110px;
   animation-delay: 3s;
 }
 .circles li:nth-child(7) {
-  left: 35%;
-  width: 150px;
-  height: 150px;
+  left: 30%;
+  width: 100px;
+  height: 100px;
   animation-delay: 7s;
 }
 .circles li:nth-child(8) {
@@ -230,7 +246,7 @@ footer {
   animation-duration: 35s;
 }
 .circles li:nth-child(10) {
-  left: 85%;
+  left: 75%;
   width: 100px;
   height: 100px;
   animation-delay: 0s;

@@ -1,7 +1,9 @@
 import {
   FETCH_PRODUCTS,
+  SET_SELECTED_PRODUCT,
   FILTER_PRODUCTS_BY_PRICE,
   ORDER_PRODUCTS_BY_PRICE,
+  ALTER_PRICE,
 } from "../types";
 
 export const fetchProducts = () => async (dispatch) => {
@@ -12,6 +14,25 @@ export const fetchProducts = () => async (dispatch) => {
   dispatch({
     type: FETCH_PRODUCTS,
     payload: data,
+  });
+};
+
+export const setProduct = (product) => async (dispatch) => {
+  dispatch({
+    type: SET_SELECTED_PRODUCT,
+    payload: product,
+  });
+};
+
+export const alterPrice = (product, index) => async (dispatch) => {
+  const price = product.price[index];
+  console.log(price);
+  product = { ...product, price: price };
+
+  console.log(product);
+  dispatch({
+    type: ALTER_PRICE,
+    payload: product,
   });
 };
 

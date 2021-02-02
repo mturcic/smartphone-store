@@ -1,6 +1,7 @@
-export default {
+const styles = {
   overlay: {
     backgroundColor: "rgba(192, 197, 200, 0.5)",
+    zIndex: "2",
   },
   content: {
     position: "absolute",
@@ -13,3 +14,5 @@ export default {
     overflowY: "auto",
   },
 };
+
+export default styles;

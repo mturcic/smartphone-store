@@ -5,9 +5,11 @@
 }
 .cart a {
   color: white;
-  text-decoration: underline;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 500;
+}
+.cart a:hover {
+  color: #333131;
 }
 .cart-header {
   color: white;
@@ -19,6 +21,7 @@
   padding: 0;
   width: 100%;
   border-radius: 3%;
+  z-index: 1;
 }
 .cart-items img {
   width: 9rem;
@@ -58,6 +61,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  z-index: 1;
 }
 .total div {
   font-size: 2rem;

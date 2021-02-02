@@ -10,9 +10,10 @@
 .products li {
   flex: 0 1 29rem;
   height: 45rem;
-  padding: 3.5rem;
+  padding: 2rem 4rem 8rem;
   transition: transform 0.5s; /* Animation */
   margin: 0 auto;
+  z-index: 1;
 }
 .products li:hover {
   transform: scale(1.1);
@@ -37,6 +38,7 @@
 }
 
 .product-price {
+  margin-top: 5px;
   display: flex;
   align-items: center;
   font-size: 1.6rem;

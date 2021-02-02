@@ -1,33 +1,47 @@
 import React, { Component } from "react";
 import formatCurrency from "../util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTimesCircle,
-  faShoppingCart,
-} from "@fortawesome/free-solid-svg-icons";
-import styles from "../style/modal.css.js";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Fade from "react-reveal/Fade";
-import Modal from "react-modal";
-import Zoom from "react-reveal";
+import Flip from "react-reveal/Flip";
 import { connect } from "react-redux";
-import { fetchProducts } from "../actions/productActions";
+import {
+  setProduct,
+  fetchProducts,
+  alterPrice,
+} from "../actions/productActions";
 import { addToCart } from "../actions/cartActions";
+import SelectedProduct from "./SelectedProduct";
 
 class Products extends Component {
   constructor(props) {
     super(props);
     this.state = {
       product: null,
+      i: 0,
     };
   }
   componentDidMount() {
     this.props.fetchProducts();
   }
-  openModal = (product) => {
-    this.setState({ product });
+  openModal = () => {
+    this.setState({ product: true });
   };
   closeModal = () => {
-    this.setState({ product: null });
+    this.setState({ product: false });
+  };
+
+  alterPrice = (product, model) => {
+    if (model === "64GB") {
+      this.setState({ i: 0 });
+      this.props.alterPrice(product, this.state.i);
+    } else if (model === "128GB") {
+      this.setState({ i: 1 });
+      this.props.alterPrice(product, this.state.i);
+    } else if (model === "256GB") {
+      this.setState({ i: 2 });
+      this.props.alterPrice(product, this.state.i);
+    }
   };
   render() {
     const { product } = this.state;
@@ -41,17 +55,47 @@ class Products extends Component {
               {this.props.products.map((product) => (
                 <li key={product._id}>
                   <div className="product">
-                    <a
-                      href={"#" + product._id}
-                      onClick={() => this.openModal(product)}
-                    >
-                      <img src={product.image} alt={product.title} />
+                    <a href={"#" + product._id}>
+                      <img
+                        onClick={() => {
+                          this.props.setProduct(product);
+                          this.openModal();
+                        }}
+                        src={product.image}
+                        alt={product.title}
+                      />
                       <p className="product-title">{product.title}</p>
+                      <div>
+                        {product.availableModels.map((model) => (
+                          <span key={model}>
+                            {" "}
+                            <button
+                              type="submit"
+                              onClick={() => {
+                                this.alterPrice(product, model);
+                              }}
+                              className="button-list"
+                            >
+                              {model}
+                            </button>
+                          </span>
+                        ))}
+                      </div>
                     </a>
                     <div className="product-price">
-                      <div>from {formatCurrency(product.price)}</div>
+                      {!this.props.product ? (
+                        <div>from {formatCurrency(product.price[0])}</div>
+                      ) : product._id === this.props.product._id ? (
+                        <div>
+                          from {formatCurrency(this.props.product.price)}
+                        </div>
+                      ) : (
+                        <div>from {formatCurrency(product.price[0])}</div>
+                      )}
                       <button
-                        onClick={() => this.props.addToCart(product)}
+                        onClick={() =>
+                          this.props.addToCart(product, this.state.i)
+                        }
                         className="button"
                       >
                         <FontAwesomeIcon icon={faShoppingCart} />
@@ -65,66 +109,9 @@ class Products extends Component {
           )}
         </Fade>
         {product && (
-          <Fade bottom cascade>
-            <Modal
-              style={styles}
-              isOpen={true}
-              onRequestClose={this.closeModal}
-              ariaHideApp={false}
-            >
-              <Zoom cascade>
-                <FontAwesomeIcon
-                  className="close-modal"
-                  icon={faTimesCircle}
-                  size="2x"
-                  onClick={this.closeModal}
-                />
-                <div className="product-details">
-                  <img src={product.image} alt={product.title} />
-                  <div className="product-details-description">
-                    <p>
-                      <strong>{product.title}</strong>
-                    </p>
-                    <br />
-                    <p>{product.description}</p>
-                    <br />
-                    <p>
-                      <strong>Available Models:</strong> {"  "}{" "}
-                      {product.availableModels.map((x) => (
-                        <span key={x._id}>
-                          {" "}
-                          <button className="button">{x}</button>
-                        </span>
-                      ))}
-                    </p>
-                    <br />
-                    <div className="product-details-price">
-                      From: {formatCurrency(product.price)}{" "}
-                      <button
-                        className="button"
-                        onClick={() => {
-                          this.props.addToCart(product);
-                          this.closeModal();
-                        }}
-                      >
-                        Add To Cart
-                      </button>
-                    </div>
-                    <br />
-                    <iframe
-                      title={product.title}
-                      width="500"
-                      height="280"
-                      src={product.video}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                  </div>
-                </div>
-              </Zoom>
-            </Modal>
-          </Fade>
+          <Flip top>
+            <SelectedProduct closeModal={this.closeModal} />
+          </Flip>
         )}
       </div>
     );
@@ -134,9 +121,12 @@ class Products extends Component {
 export default connect(
   (state) => ({
     products: state.products.filteredItems,
+    product: state.products.product,
   }),
   {
     fetchProducts,
     addToCart,
+    setProduct,
+    alterPrice,
   }
 )(Products);

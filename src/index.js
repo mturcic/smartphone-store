@@ -9,6 +9,7 @@ import "./style/cart.css";
 import "./style/order.css";
 import "./style/checkoutForm.css";
 import "./style/productDetails.css";
+import "./style/tooltip.css";
 
 ReactDOM.render(
   <React.Fragment>
