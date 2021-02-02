@@ -19,7 +19,7 @@ const Product = mongoose.model(
     title: String,
     image: String,
     description: String,
-    price: Number,
+    price: [Number],
     availableModels: [String],
     video: String,
   })
@@ -40,6 +40,11 @@ app.delete("/api/products/:id", async (req, res) => {
   const deletedProduct = await Product.findByIdAndDelete(req.params.id);
   res.send(deletedProduct);
 });
+
+// app.update("/api/products/:id", async (req, res) => {
+//   const updatedProduct = await Product.findByIdAndUpdate(req.params.id);
+//   res.send(updatedProduct);
+// });
 
 const Order = mongoose.model(
   "order",
@@ -81,10 +86,12 @@ app.post("/api/orders", async (req, res) => {
   const order = await Order(req.body).save();
   res.send(order);
 });
+
 app.get("/api/orders", async (req, res) => {
   const orders = await Order.find({});
   res.send(orders);
 });
+
 app.delete("/api/orders/:id", async (req, res) => {
   const order = await Order.findByIdAndDelete(req.params.id);
   res.send(order);

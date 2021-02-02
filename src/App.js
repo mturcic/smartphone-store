@@ -28,9 +28,9 @@ class App extends React.Component {
               <div className="sidebar">
                 <Cart />
               </div>
-              <Background />
             </div>
           </main>
+          <Background />
           <footer>
             All rights reserved.
             <a

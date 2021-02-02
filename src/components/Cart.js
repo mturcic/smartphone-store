@@ -6,7 +6,7 @@ import Zoom from "react-reveal/Zoom";
 import { connect } from "react-redux";
 import { removeFromCart } from "../actions/cartActions";
 import { createOrder, clearOrder } from "../actions/orderActions";
-import styles from "../style/modal.css.js";
+import styles from "../style/modal.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimesCircle,
@@ -54,20 +54,18 @@ class Cart extends Component {
       <div>
         {cartItems.length === 0 ? (
           <div className="cart cart-header">Cart is empty</div>
+        ) : cartItems.length === 1 ? (
+          <div className="cart cart-header">
+            You have {cartItems.length} item in the cart{" "}
+          </div>
         ) : (
           <div className="cart cart-header">
-            You have {cartItems.length} in the cart{" "}
+            You have {cartItems.length} items in the cart{" "}
           </div>
         )}
-
         {order && (
-          <Modal
-            style={styles}
-            isOpen={true}
-            onRequestClose={this.closeModal}
-            ariaHideApp={false}
-          >
-            <Zoom cascade>
+          <Modal style={styles} isOpen={true} onRequestClose={this.closeModal}>
+            <Zoom>
               <FontAwesomeIcon
                 className="close-modal"
                 icon={faTimesCircle}
@@ -99,7 +97,7 @@ class Cart extends Component {
                   </li>
                   <li>
                     <div>Total:</div>
-                    <div>{formatCurrency(order.total)}</div>
+                    <div>{order.total}</div>
                   </li>
                   <li>
                     <div>Cart Items:</div>
@@ -121,17 +119,24 @@ class Cart extends Component {
             <Fade left cascade>
               <ul className="cart-items">
                 {cartItems.map((item) => (
-                  <li key={item._id}>
+                  <li key={item._id + item.availableModels}>
                     <div>
                       <img src={item.image} alt={item.title} />
                     </div>
-                    <div>
-                      <a href={"#" + item._id}>{item.title}</a>
+                    <div className="tooltip">
+                      {item.title} ({item.availableModels})
+                      <span className="tooltiptext">
+                        The {item.availableModels} model with a price of{" "}
+                        {formatCurrency(item.price)}
+                      </span>
                       <div className="right">
                         {formatCurrency(item.price)} x {item.count}{" "}
                         <button
                           className="button-remove"
-                          onClick={() => this.props.removeFromCart(item)}
+                          onClick={() => {
+                            console.log(item);
+                            this.props.removeFromCart(item);
+                          }}
                         >
                           Remove
                         </button>
