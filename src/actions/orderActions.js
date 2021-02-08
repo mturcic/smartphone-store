@@ -18,8 +18,13 @@ export const createOrder = (order) => (dispatch) => {
 export const clearOrder = () => (dispatch) => {
   dispatch({ type: CLEAR_ORDER });
 };
-export const fetchOrders = () => (dispatch) => {
-  fetch("/api/orders")
+export const fetchOrders = (page, limit) => (dispatch) => {
+  fetch(`/api/orders?page=${page}&limit=${limit}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  })
     .then((res) => res.json())
     .then((data) => {
       dispatch({ type: FETCH_ORDERS, payload: data });

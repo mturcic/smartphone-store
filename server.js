@@ -88,8 +88,26 @@ app.post("/api/orders", async (req, res) => {
 });
 
 app.get("/api/orders", async (req, res) => {
-  const orders = await Order.find({});
-  res.send(orders);
+  // destructure page and limit and set default values
+  const { page = 1, limit = 10 } = req.query;
+
+  try {
+    // execute query with page and limit values
+    const orders = await Order.find()
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .exec();
+
+    // get total documents in the Posts collection
+    const count = await Order.countDocuments();
+    res.json({
+      orders,
+      totalPages: Math.ceil(count / limit),
+      currentPage: page,
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
 });
 
 app.delete("/api/orders/:id", async (req, res) => {

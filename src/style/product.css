@@ -41,7 +41,6 @@
   margin-top: 5px;
   display: flex;
   align-items: center;
-  font-size: 1.6rem;
 }
 
 .product-title {
@@ -57,5 +56,5 @@
 }
 
 .product-price div {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }

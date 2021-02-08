@@ -1,0 +1,72 @@
+.button {
+  padding: 1rem;
+  font-size: 1.45rem;
+  font-weight: 600;
+  border: none;
+  background-color: #fafafa;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: black;
+}
+.button:hover {
+  background-color: #23c59b;
+  border: 0.1rem #ffffff solid;
+}
+
+.button-list {
+  padding: 5px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: none;
+  background-color: #fafafa;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: black;
+  z-index: 1;
+}
+.button-list:hover {
+  background-color: #23c59b;
+  border: 0.1rem #ffffff solid;
+}
+
+.close-modal {
+  position: sticky;
+  top: 1rem;
+  z-index: 1000;
+  padding: none;
+  border: none;
+  background-color: #75747400;
+  cursor: pointer;
+}
+
+.button-paginate {
+  padding: 1rem;
+  margin: 5px 5px auto;
+  font-size: 1.45rem;
+  font-weight: 600;
+  border: none;
+  background-color: #fafafa;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: black;
+}
+.button-paginate:hover {
+  background-color: rgba(207, 204, 204, 0.6);
+  border: 0.1rem #ffffff solid;
+}
+
+.pagination-display {
+  padding: 1rem;
+  margin: 5px 5px auto;
+  font-size: 1.45rem;
+  font-weight: 600;
+  border: none;
+  background-color: #fafafa;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: black;
+}

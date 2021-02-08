@@ -31,15 +31,27 @@ class Products extends Component {
     this.setState({ product: false });
   };
 
-  alterPrice = (product, model) => {
-    if (model === "64GB") {
-      this.setState({ i: 0 });
+  toggleModel = (product, model) => {
+    if (model === 0) {
+      this.setState({ i: 0 }, () => {
+        this.alterPrice(product);
+      });
+    } else if (model === 1) {
+      this.setState({ i: 1 }, () => {
+        this.alterPrice(product);
+      });
+    } else if (model === 2) {
+      this.setState({ i: 2 }, () => {
+        this.alterPrice(product);
+      });
+    }
+  };
+  alterPrice = (product) => {
+    if (this.state.i === 0) {
       this.props.alterPrice(product, this.state.i);
-    } else if (model === "128GB") {
-      this.setState({ i: 1 });
+    } else if (this.state.i === 1) {
       this.props.alterPrice(product, this.state.i);
-    } else if (model === "256GB") {
-      this.setState({ i: 2 });
+    } else if (this.state.i === 2) {
       this.props.alterPrice(product, this.state.i);
     }
   };
@@ -72,7 +84,10 @@ class Products extends Component {
                             <button
                               type="submit"
                               onClick={() => {
-                                this.alterPrice(product, model);
+                                this.toggleModel(
+                                  product,
+                                  product.availableModels.indexOf(model)
+                                );
                               }}
                               className="button-list"
                             >
@@ -84,23 +99,25 @@ class Products extends Component {
                     </a>
                     <div className="product-price">
                       {!this.props.product ? (
-                        <div>from {formatCurrency(product.price[0])}</div>
+                        <div>
+                          From {formatCurrency(product.price[this.state.i])}
+                        </div>
                       ) : product._id === this.props.product._id ? (
                         <div>
-                          from {formatCurrency(this.props.product.price)}
+                          {formatCurrency(this.props.product.price)}{" "}
+                          <button
+                            onClick={() =>
+                              this.props.addToCart(product, this.state.i)
+                            }
+                            className="button"
+                          >
+                            <FontAwesomeIcon icon={faShoppingCart} />
+                            &nbsp;&nbsp;Add To Cart
+                          </button>
                         </div>
                       ) : (
-                        <div>from {formatCurrency(product.price[0])}</div>
+                        <div>From {formatCurrency(product.price[0])}</div>
                       )}
-                      <button
-                        onClick={() =>
-                          this.props.addToCart(product, this.state.i)
-                        }
-                        className="button"
-                      >
-                        <FontAwesomeIcon icon={faShoppingCart} />
-                        &nbsp;&nbsp;Add To Cart
-                      </button>
                     </div>
                   </div>
                 </li>

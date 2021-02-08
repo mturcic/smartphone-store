@@ -5,7 +5,11 @@ export const addToCart = (product, index) => (dispatch, getState) => {
   const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
   let alreadyExists = false;
   cartItems.forEach((x) => {
-    if (x._id === product._id && x.price === product.price[index]) {
+    if (
+      x._id === product._id &&
+      x.price === product.price[index] &&
+      x.availableModels[0] === product.availableModels[index]
+    ) {
       alreadyExists = true;
       x.count++;
     }
@@ -48,7 +52,11 @@ export const addToCart = (product, index) => (dispatch, getState) => {
 export const removeFromCart = (product) => (dispatch, getState) => {
   const cartItems = getState()
     .cart.cartItems.slice()
-    .filter((x) => x.price !== product.price);
+    .filter(
+      (item) =>
+        item._id + item.availableModels[0] !==
+        product._id + product.availableModels[0]
+    );
   dispatch({
     type: REMOVE_FROM_CART,
     payload: { cartItems },

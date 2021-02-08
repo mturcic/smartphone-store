@@ -27,6 +27,7 @@ class SelectedProduct extends Component {
       <div>
         <Modal style={styles} isOpen={true} ariaHideApp={false}>
           <FontAwesomeIcon
+            className="close-modal"
             icon={faTimesCircle}
             size="2x"
             onClick={this.props.closeModal}

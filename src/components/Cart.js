@@ -134,7 +134,6 @@ class Cart extends Component {
                         <button
                           className="button-remove"
                           onClick={() => {
-                            console.log(item);
                             this.props.removeFromCart(item);
                           }}
                         >

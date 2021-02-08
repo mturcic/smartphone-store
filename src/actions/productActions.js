@@ -10,7 +10,6 @@ export const fetchProducts = () => async (dispatch) => {
   //Try catch
   const res = await fetch("/api/products");
   const data = await res.json();
-  console.log(data);
   dispatch({
     type: FETCH_PRODUCTS,
     payload: data,
@@ -26,7 +25,6 @@ export const setProduct = (product) => async (dispatch) => {
 
 export const alterPrice = (product, index) => async (dispatch) => {
   const price = product.price[index];
-  console.log(price);
   product = { ...product, price: price };
 
   console.log(product);
@@ -45,12 +43,13 @@ export const filterProducts = (products, price) => (dispatch) => {
         price === ""
           ? products
           : price === "200"
-          ? products.filter((products) => products.price < price)
+          ? products.filter((products) => products.price[0] < price)
           : price === "500"
           ? products.filter(
-              (products) => products.price > 200 && products.price <= price
+              (products) =>
+                products.price[0] > 200 && products.price[0] <= price
             )
-          : products.filter((products) => products.price >= price),
+          : products.filter((products) => products.price[0] >= price),
     },
   });
 };
