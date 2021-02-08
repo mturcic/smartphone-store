@@ -26,12 +26,157 @@
 
 /* Orders */
 .orders {
-  width: 100%;
-  padding: 10px;
+  border-collapse: collapse;
+  padding: 50px;
+  width: fit-content;
+  overflow-block: auto;
+}
+.frame {
+  padding: 50px;
+  border-radius: 50px;
+  background-color: rgba(207, 204, 204, 0.6);
+  overflow: auto;
+}
+table {
+  background-color: oldlace;
+  border-radius: 30px;
+  border-collapse: collapse;
+  overflow: auto;
+}
+tbody > tr:nth-child(odd) {
+  background-color: rgba(207, 204, 204, 0.6);
+}
+tr:hover {
+  background-color: #203040;
+  color: oldlace;
+}
+tr:nth-child(odd):hover {
+  background-color: #203040;
 }
 td {
-  padding: 5px;
+  padding: 10px;
 }
 th {
+  padding: 20px;
+  color: oldlace;
   text-align: left;
+  background-color: #203040;
+  border-radius: 30px 30px 0 0;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1045px) {
+  table {
+    border: 0;
+    border-radius: 30px;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: flex;
+    margin-bottom: 0.625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .orders {
+    border-collapse: collapse;
+    padding: 0px;
+    width: fit-content;
+    overflow-block: auto;
+  }
+  .frame {
+    padding: 0px;
+    border-radius: 0px;
+    background-color: rgba(207, 204, 204, 0.6);
+    overflow: auto;
+  }
+  table {
+    border: -10;
+    border-radius: 30px;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 0px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: flex;
+    margin-bottom: 0.6em;
+  }
+
+  table td {
+    padding: 0.5px;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.78em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
 }

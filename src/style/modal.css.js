@@ -7,11 +7,13 @@ const styles = {
     position: "absolute",
     top: "8%",
     left: "5%",
-    right: "15%",
+    right: "10%",
     bottom: "10%",
     background:
       "linear-gradient(90deg, rgba(208,205,224,1) 24%, rgba(61,132,163,0.9808298319327731) 100%)",
-    overflowY: "auto",
+    WebkitScrollbar: {
+      display: "none",
+    },
   },
 };
 
