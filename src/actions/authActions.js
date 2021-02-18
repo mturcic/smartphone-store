@@ -1,4 +1,11 @@
-import { LOGIN_USER, LOGIN_FAILED, LOGOUT_USER, LOGOUT_FAILED } from "../types";
+import {
+  LOGIN_USER,
+  LOGIN_FAILED,
+  LOGOUT_USER,
+  LOGOUT_FAILED,
+  REGISTER_USER,
+  REGISTER_FAILED,
+} from "../types";
 const axios = require("axios").default;
 
 export const login = (email, password) => (dispatch) => {
@@ -26,5 +33,20 @@ export const logout = () => (dispatch) => {
     })
     .catch((err) => {
       dispatch({ type: LOGOUT_FAILED, payload: err.response.statusText });
+    });
+};
+
+export const register = (name, email, password) => (dispatch) => {
+  axios
+    .post("http://localhost:3000/api/user/register", {
+      name: name,
+      email: email,
+      password: password,
+    })
+    .then((response) => {
+      dispatch({ type: REGISTER_USER, payload: response.data.name });
+    })
+    .catch((err) => {
+      dispatch({ type: REGISTER_FAILED, payload: err.response.data });
     });
 };

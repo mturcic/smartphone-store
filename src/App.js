@@ -8,6 +8,7 @@ import { Orders } from "./components/Orders";
 import Header from "./components/Header";
 import LoginScreen from "./screens/LoginScreen";
 import LogoutScreen from "./screens/LogoutScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 class App extends React.Component {
   render() {
@@ -21,6 +22,7 @@ class App extends React.Component {
               <Route path="/orders" component={Orders} />
               <Route path="/login" component={LoginScreen} />
               <Route path="/logout" component={LogoutScreen} />
+              <Route path="/register" component={RegisterScreen} />
             </main>
             <footer>
               All rights reserved.

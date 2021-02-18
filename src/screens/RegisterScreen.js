@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../actions/authActions";
+import { register } from "../actions/authActions";
 import Fade from "react-reveal/Fade";
 import { Redirect, useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-export default function Login() {
+export default function Register() {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const isRegistered = useSelector((state) => state.user.isRegistered);
   const message = useSelector((state) => state.user.message);
   const history = useHistory();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+
+  const changeName = (e) => {
+    const name = e.target.value;
+    setName(name);
+  };
 
   const changeEmail = (e) => {
     const email = e.target.value;
@@ -24,18 +33,14 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
-  };
-
-  const redirect = () => {
-    history.push("/register");
+    dispatch(register(name, email, password));
   };
 
   useEffect(() => {
-    if (isLoggedIn === true) {
-      history.push("/orders");
+    if (isRegistered === true) {
+      history.push("/login");
     }
-  }, [isLoggedIn, history]);
+  }, [isRegistered, history]);
 
   return isLoggedIn === true ? (
     <Redirect to="/orders" />
@@ -45,39 +50,48 @@ export default function Login() {
         <div className="center">
           <form className="login-form" onSubmit={handleLogin}>
             <ul className="form-container">
+              <li className="user-icon">
+                <FontAwesomeIcon icon={faUser} size="3x" />
+              </li>
+              <li>
+                <label>Please enter your registration data</label>
+              </li>
+              <div className="login-message">{message}</div>
+              <li>
+                <label>Name</label>
+                <input
+                  name="name"
+                  type="text"
+                  value={name}
+                  placeholder="At least 5 characters"
+                  required
+                  onChange={changeName}
+                />
+              </li>
               <li>
                 <label>Email</label>
                 <input
                   name="email"
                   type="email"
                   value={email}
+                  placeholder="Must be an email"
                   required
                   onChange={changeEmail}
                 />
               </li>
-              <div className="login-message">{message}</div>
               <li>
                 <label>Password</label>
                 <input
                   name="password"
                   type="password"
                   value={password}
+                  placeholder="At least 5 characters"
                   required
                   onChange={changePassword}
                 />
               </li>
               <li>
                 <button className="button" type="submit">
-                  Log in
-                </button>
-              </li>
-              <li>
-                <label className="register-text">
-                  Don't have an account yet?
-                </label>
-              </li>
-              <li>
-                <button className="button" onClick={redirect}>
                   Register
                 </button>
               </li>
