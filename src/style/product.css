@@ -30,6 +30,7 @@
   max-width: 37rem;
   max-height: 37rem;
   border-radius: 900px 30px 120px 900px;
+  box-shadow: 10px 10px 20px rgba(102, 100, 107, 0.719);
 }
 .product:hover,
 .product img:hover {

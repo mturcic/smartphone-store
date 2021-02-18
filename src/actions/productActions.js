@@ -27,7 +27,6 @@ export const alterPrice = (product, index) => async (dispatch) => {
   const price = product.price[index];
   product = { ...product, price: price };
 
-  console.log(product);
   dispatch({
     type: ALTER_PRICE,
     payload: product,
@@ -61,15 +60,14 @@ export const sortProducts = (filteredProducts, sort) => (dispatch) => {
   } else {
     sortedProducts.sort((a, b) =>
       sort === "LOWEST"
-        ? a.price > b.price
+        ? a.price[0] > b.price[0]
           ? 1
           : -1
-        : a.price > b.price
+        : a.price[0] > b.price[0]
         ? -1
         : 1
     );
   }
-  console.log(sortedProducts);
   dispatch({
     type: ORDER_PRODUCTS_BY_PRICE,
     payload: {

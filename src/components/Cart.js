@@ -64,7 +64,12 @@ class Cart extends Component {
           </div>
         )}
         {order && (
-          <Modal style={styles} isOpen={true} onRequestClose={this.closeModal}>
+          <Modal
+            style={styles}
+            isOpen={true}
+            onRequestClose={this.closeModal}
+            ariaHideApp={false}
+          >
             <Zoom>
               <FontAwesomeIcon
                 className="close-modal"
@@ -103,7 +108,7 @@ class Cart extends Component {
                     <div>Cart Items:</div>
                     <div>
                       {order.cartItems.map((x) => (
-                        <div>
+                        <div key={x._id}>
                           {x.count} {" x "} {x.title}
                         </div>
                       ))}

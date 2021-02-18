@@ -2,11 +2,12 @@ import React from "react";
 import Background from "./components/Background";
 import store from "./store";
 import { Provider } from "react-redux";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
-import AdminScreen from "./screens/AdminScreen";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { Orders } from "./components/Orders";
+import Header from "./components/Header";
+import LoginScreen from "./screens/LoginScreen";
+import LogoutScreen from "./screens/LogoutScreen";
 
 class App extends React.Component {
   render() {
@@ -14,25 +15,13 @@ class App extends React.Component {
       <Provider store={store}>
         <BrowserRouter>
           <div className="grid-container">
-            <header>
-              <img
-                className="header-image"
-                src="/images/header-logo.png"
-                alt="header-logo"
-              />
-              <a href="/">The Smartphone store</a>
-              <div className="header-link">
-                <Link to="/admin">
-                  <FontAwesomeIcon icon={faUser} />
-                  &nbsp;Orders
-                </Link>
-              </div>
-            </header>
+            <Header />
             <main>
-              <Route path="/admin" component={AdminScreen} />
               <Route path="/" component={HomeScreen} exact />
+              <Route path="/orders" component={Orders} />
+              <Route path="/login" component={LoginScreen} />
+              <Route path="/logout" component={LogoutScreen} />
             </main>
-            <Background />
             <footer>
               All rights reserved.
               <a
@@ -44,6 +33,7 @@ class App extends React.Component {
                 &nbsp; © mturcic
               </a>
             </footer>
+            <Background />
           </div>
         </BrowserRouter>
       </Provider>

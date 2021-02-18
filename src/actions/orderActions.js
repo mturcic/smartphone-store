@@ -13,7 +13,10 @@ export const createOrder = (order) => (dispatch) => {
       dispatch({ type: CREATE_ORDER, payload: data });
       localStorage.clear("cartItems");
       dispatch({ type: CLEAR_CART });
-    });
+    })
+    .catch((err) =>
+      alert("Creating order unsuccessful. Server responded with:", err)
+    );
 };
 export const clearOrder = () => (dispatch) => {
   dispatch({ type: CLEAR_ORDER });
@@ -28,5 +31,8 @@ export const fetchOrders = (page, limit) => (dispatch) => {
     .then((res) => res.json())
     .then((data) => {
       dispatch({ type: FETCH_ORDERS, payload: data });
-    });
+    })
+    .catch((err) =>
+      alert("Fetching orders unsuccessful. Server responded with:", err)
+    );
 };

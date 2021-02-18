@@ -11,6 +11,8 @@ import "./style/order.css";
 import "./style/checkoutForm.css";
 import "./style/productDetails.css";
 import "./style/tooltip.css";
+import "./style/login.css";
+import "./style/logout.css";
 
 ReactDOM.render(
   <React.Fragment>
