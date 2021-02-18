@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOrders } from "../actions/orderActions";
-import {} from "react-table";
 import {
   faChevronCircleLeft,
   faChevronCircleRight,
@@ -11,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Orders = () => {
   const orders = useSelector((state) => state.order.orders);
-  const [limit, setLimit] = useState(10);
+  const [limit] = useState(10);
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
@@ -55,7 +54,7 @@ export const Orders = () => {
                 <td>{order.address}</td>
                 <td>
                   {order.cartItems.map((item) => (
-                    <div key={item._id}>
+                    <div key={item._id + item.count}>
                       {item.count} {" x "} {item.title}
                     </div>
                   ))}

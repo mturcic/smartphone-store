@@ -1,12 +1,23 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const shortid = require("shortid");
+const cookieParser = require("cookie-parser");
 
+dotenv.config();
 const app = express();
 app.use(bodyParser.json());
+app.use(cookieParser());
 
-mongoose.connect("mongodb://localhost/react-shopping-cart-db", {
+//Imports
+const authRoute = require("./src/routes/auth");
+const orderRoute = require("./src/routes/orders");
+//Middlewares
+app.use("/api/user", authRoute);
+app.use("/api/orders", orderRoute);
+
+mongoose.connect(process.env.DB_CONNECT, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -46,74 +57,5 @@ app.delete("/api/products/:id", async (req, res) => {
 //   res.send(updatedProduct);
 // });
 
-const Order = mongoose.model(
-  "order",
-  new mongoose.Schema(
-    {
-      _id: {
-        type: String,
-        default: shortid.generate,
-      },
-      email: String,
-      name: String,
-      address: String,
-      total: Number,
-      cartItems: [
-        {
-          _id: String,
-          title: String,
-          price: Number,
-          count: Number,
-        },
-      ],
-    },
-    {
-      timestamps: true,
-    }
-  )
-);
-
-app.post("/api/orders", async (req, res) => {
-  if (
-    !req.body.name ||
-    !req.body.email ||
-    !req.body.address ||
-    !req.body.total ||
-    !req.body.cartItems
-  ) {
-    return res.send({ message: "Data is required." });
-  }
-  const order = await Order(req.body).save();
-  res.send(order);
-});
-
-app.get("/api/orders", async (req, res) => {
-  // destructure page and limit and set default values
-  const { page = 1, limit = 10 } = req.query;
-
-  try {
-    // execute query with page and limit values
-    const orders = await Order.find()
-      .limit(limit * 1)
-      .skip((page - 1) * limit)
-      .exec();
-
-    // get total documents in the Posts collection
-    const count = await Order.countDocuments();
-    res.json({
-      orders,
-      totalPages: Math.ceil(count / limit),
-      currentPage: page,
-    });
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-app.delete("/api/orders/:id", async (req, res) => {
-  const order = await Order.findByIdAndDelete(req.params.id);
-  res.send(order);
-});
-
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log("serve at http://localhost:5000"));
+app.listen(port, () => console.log("server up and running"));

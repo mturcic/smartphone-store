@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Orders } from "../components/Orders";
+import Login from "../components/Login";
 
 export default class AdminScreen extends Component {
   render() {
     return (
       <div>
-        <Orders />
+        <Login />
       </div>
     );
   }
